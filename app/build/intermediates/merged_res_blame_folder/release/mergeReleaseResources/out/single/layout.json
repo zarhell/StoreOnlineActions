@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "com.storeonline.app-mergeReleaseResources-47:/layout/item_product.xml",
+        "source": "com.storeonline.app-main-49:/layout/item_product.xml"
+    },
+    {
+        "merged": "com.storeonline.app-mergeReleaseResources-47:/layout/activity_register.xml",
+        "source": "com.storeonline.app-main-49:/layout/activity_register.xml"
+    },
+    {
+        "merged": "com.storeonline.app-mergeReleaseResources-47:/layout/activity_login.xml",
+        "source": "com.storeonline.app-main-49:/layout/activity_login.xml"
+    },
+    {
+        "merged": "com.storeonline.app-mergeReleaseResources-47:/layout/activity_cart.xml",
+        "source": "com.storeonline.app-main-49:/layout/activity_cart.xml"
+    },
+    {
+        "merged": "com.storeonline.app-mergeReleaseResources-47:/layout/activity_product_list.xml",
+        "source": "com.storeonline.app-main-49:/layout/activity_product_list.xml"
+    }
+]
