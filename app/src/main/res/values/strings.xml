@@ -1,3 +1,29 @@
 <resources>
+    <!-- App Name -->
     <string name="app_name">StoreOnlineActions</string>
+
+    <!-- Login Screen -->
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="submit">Submit</string>
+    <string name="confirm_password">Confirmar Contraseña</string>
+    <string name="create_new_account">Crear nueva cuenta</string>
+
+    <!-- Product List Screen -->
+    <string name="product_name">Product Name</string>
+    <string name="price">Price</string>
+    <string name="buscar_productos">Buscar Productos</string>
+    <string name="buscar_productos_dots">Buscar productos...</string>
+    <string name="ir_al_carrito">Ir al Carrito</string>
+
+    <!-- Cart Screen -->
+    <string name="carrito_de_compras">Carrito de Compras</string>
+    <string name="your_cart_is_empty">Your Cart is Empty</string>
+    <string name="go_to_cart">Go to Cart</string>
+    <string name="register">Register</string>
+    <string name="purchase">Comprar</string>
+    <string name="confirm_purchase">Confirmar la Compra</string>
+    <string name="proceed_to_purchase">Continuar al pago</string>
+
 </resources>

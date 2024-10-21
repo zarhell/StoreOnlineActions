@@ -1,5 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.StoreOnline" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- colores globales -->
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryVariant">@color/primaryColor</item>
+        <item name="colorSecondary">@color/secondaryColor</item>
 
-    <style name="Theme.StoreOnlineActions" parent="android:Theme.Material.Light.NoActionBar" />
+        <!-- Fondo de la aplicación -->
+        <item name="android:windowBackground">@color/backgroundColor</item>
+
+        <!-- Colores de texto -->
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
+
+        <!-- Color de resaltado-->
+        <item name="colorAccent">@color/highlightColor</item>
+
+        <!-- Color ase -->
+        <item name="android:buttonTint">@color/primaryColor</item>
+
+        <!-- Otros componentes,-->
+        <item name="colorOnPrimary">@color/highlightColor</item>
+        <item name="colorOnSecondary">@color/secondaryColor</item>
+    </style>
 </resources>
