@@ -32,7 +32,6 @@ local.properties
 /.cxx/
 /.externalNativeBuild/
 /*.cxx/
-.gradle/
 /captures/
 /outputs/
 /*.apk
