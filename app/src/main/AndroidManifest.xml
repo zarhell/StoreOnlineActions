@@ -9,16 +9,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-        <activity android:name="com.storeonline.LoginActivity"
+        <activity android:name="com.storeonline.infrastructure.view.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.storeonline.RegisterActivity" />
-        <activity android:name="com.storeonline.CartActivity" />
-        <activity android:name="com.storeonline.ProductListActivity" />
+        <activity android:name="com.storeonline.infrastructure.view.RegisterActivity" />
+        <activity android:name="com.storeonline.infrastructure.view.CartActivity" />
+        <activity android:name="com.storeonline.infrastructure.view.ProductListActivity" />
     </application>
 
 </manifest>
