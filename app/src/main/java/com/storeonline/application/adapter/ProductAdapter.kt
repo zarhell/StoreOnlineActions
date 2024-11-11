@@ -3,30 +3,39 @@ package com.storeonline.application.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.storeonline.R
 import com.storeonline.databinding.ItemProductBinding
 import com.storeonline.domain.model.Product
+
 
 class ProductAdapter(
     private var products: List<Product>,
     private val onProductSelected: (Product) -> Unit
 ) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
-    class ProductViewHolder(val binding: ItemProductBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ProductViewHolder(val binding: ItemProductBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(product: Product) {
+            binding.tvProductName.text = product.name
+            binding.tvProductPrice.text = "$${product.price}"
+            Glide.with(binding.root.context)
+                .load(product.image)
+                .placeholder(R.drawable.placeholder_image)
+                .error(R.drawable.error_image)
+                .into(binding.imgProduct)
+            binding.root.setOnClickListener { onProductSelected(product) }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val binding = ItemProductBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ProductViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        val product = products[position]
-        holder.binding.tvProductName.text = product.name
-        holder.binding.tvProductPrice.text = "$${product.price}"
 
-        holder.binding.root.setOnClickListener {
-            onProductSelected(product)
+    override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
+        holder.bind(products[position])
         }
-    }
 
     override fun getItemCount() = products.size
 

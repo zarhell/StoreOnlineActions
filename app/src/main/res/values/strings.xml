@@ -14,8 +14,10 @@
     <string name="product_name">Product Name</string>
     <string name="price">Price</string>
     <string name="buscar_productos">Buscar Productos</string>
-    <string name="buscar_productos_dots">Buscar productos...</string>
+    <string name="buscar_productos_dots">Buscar productos…</string>
     <string name="ir_al_carrito">Ir al Carrito</string>
+    <string name="product_price_format">Price: $%.2f</string>
+
 
     <!-- Cart Screen -->
     <string name="carrito_de_compras">Carrito de Compras</string>
@@ -25,5 +27,13 @@
     <string name="purchase">Comprar</string>
     <string name="confirm_purchase">Confirmar la Compra</string>
     <string name="proceed_to_purchase">Continuar al pago</string>
+    <string name="detalle_producto">Detalle del Producto</string>
+    <string name="agregar_al_carrito">Agregar al carrito</string>
+    <string name="product_price">Precio del Producto</string>
+    <string name="agregar_producto">Agregar Producto</string>
+    <string name="nombre_producto">Nombre Producto</string>
+    <string name="precio_producto">Precio Producto</string>
+    <string name="product_image">Imagen Producto</string>
+    <string name="ver_carrito">Ver Carrito</string>
 
 </resources>

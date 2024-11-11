@@ -23,11 +23,12 @@
         android:id="@+id/recyclerViewCart"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/tvCartTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"
         app:layout_constraintBottom_toTopOf="@id/btnProceedToPurchase"
-        android:layout_margin="16dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvCartTitle"
+        app:layout_constraintVertical_bias="0.437" />
 
     <Button
         android:id="@+id/btnProceedToPurchase"
@@ -35,7 +36,7 @@
         android:layout_height="wrap_content"
         android:text="@string/proceed_to_purchase"
         app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="16dp"
         android:background="@drawable/rounded_button"

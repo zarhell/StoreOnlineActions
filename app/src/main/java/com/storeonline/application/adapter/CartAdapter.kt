@@ -3,6 +3,8 @@ package com.storeonline.application.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.storeonline.R
 import com.storeonline.databinding.ItemProductBinding
 import com.storeonline.domain.model.Product
 
@@ -21,11 +23,16 @@ class CartAdapter(
         val product = products[position]
         holder.binding.tvProductName.text = product.name
         holder.binding.tvProductPrice.text = "$${product.price}"
+
+    Glide.with(holder.itemView.context)
+        .load(product.image)
+        .placeholder(R.drawable.placeholder_image)
+        .error(R.drawable.error_image)
+        .into(holder.binding.imgProduct)
     }
 
     override fun getItemCount() = products.size
 
-    // Método para actualizar la lista de productos en el carrito
     fun updateList(newProducts: List<Product>) {
         products = newProducts
         notifyDataSetChanged()
