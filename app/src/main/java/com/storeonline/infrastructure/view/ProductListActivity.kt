@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.storeonline.application.adapter.ProductAdapter
 import com.storeonline.databinding.ActivityProductListBinding
 import com.storeonline.domain.model.Product
-import com.storeonline.domain.model.ProductContract
+import com.storeonline.application.client.ProductContract
 import com.storeonline.infrastructure.repository.ProductDbRepository
 
 class ProductListActivity : AppCompatActivity() {

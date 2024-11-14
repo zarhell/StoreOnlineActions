@@ -8,7 +8,9 @@
         android:maxSdkVersion="32"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
 
     <application
@@ -26,19 +28,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.storeonline.infrastructure.view.ProductListActivity"
-            android:exported="false" />
         <activity android:name="com.storeonline.infrastructure.view.RegisterActivity"
             android:exported="false" />
-        <activity android:name="com.storeonline.infrastructure.view.CartActivity"
-            android:exported="false" />
-        <activity android:name="com.storeonline.infrastructure.view.AddProductActivity"
+        <activity android:name="com.storeonline.infrastructure.view.ProductListActivity"
             android:exported="false" />
         <activity android:name="com.storeonline.infrastructure.view.ProductDetailActivity"
             android:exported="false" />
+        <activity android:name="com.storeonline.infrastructure.view.AddProductActivity"
+            android:exported="false" />
+        <activity android:name="com.storeonline.infrastructure.view.CartActivity"
+            android:exported="false" />
         <activity android:name="com.storeonline.infrastructure.view.PurchaseActivity"
             android:exported="false" />
-
+        <activity android:name="com.storeonline.infrastructure.view.PaymentActivity"
+            android:exported="false" />
+        <meta-data
+            android:name="osmdroid.basePath"
+            android:value="osmdroid"/>
+        <meta-data
+            android:name="osmdroid.cachePath"
+            android:value="osmdroid/cache"/>
     </application>
 
 </manifest>

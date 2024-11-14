@@ -35,5 +35,16 @@
     <string name="precio_producto">Precio Producto</string>
     <string name="product_image">Imagen Producto</string>
     <string name="ver_carrito">Ver Carrito</string>
+    <string name="user_name">Nombre de usuario</string>
+    <string name="delete_user">Eliminar Usuario</string>
+    <string name="country">País</string>
+    <string name="card_number">Número de Tarjeta</string>
+    <string name="card_owner">Nombre del Titular</string>
+    <string name="expiration_date">Fecha de Expiración (MM/YY)</string>
+    <string name="cvv">CVV</string>
+    <string name="shipping_address">Dirección de Envío</string>
+    <string name="city">Ciudad</string>
+    <string name="postal_code">Código Postal</string>
+    <string name="location_confirmation">Confirmar Ubicación</string>
 
 </resources>

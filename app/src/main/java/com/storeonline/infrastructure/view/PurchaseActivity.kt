@@ -1,5 +1,6 @@
 package com.storeonline.infrastructure.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -31,7 +32,8 @@ class PurchaseActivity : AppCompatActivity() {
         }
 
         binding.btnConfirmPurchase.setOnClickListener {
-            Toast.makeText(this, "Compra confirmada!", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, PaymentActivity::class.java)
+            startActivity(intent)
         }
     }
 }

@@ -3,7 +3,7 @@ package com.storeonline.infrastructure.repository
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import com.storeonline.domain.model.ProductContract
+import com.storeonline.application.client.ProductContract
 
 class ProductDbRepository(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     override fun onCreate(db: SQLiteDatabase) {

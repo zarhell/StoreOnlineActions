@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.storeonline.databinding.ActivityAddProductBinding
-import com.storeonline.domain.model.ProductContract
+import com.storeonline.application.client.ProductContract
 import com.storeonline.infrastructure.repository.ProductDbRepository
 
 class AddProductActivity : AppCompatActivity() {

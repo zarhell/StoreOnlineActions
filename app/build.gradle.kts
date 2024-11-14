@@ -1,7 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-android")
+    id("kotlin-parcelize")
 }
+
 
 android {
     namespace = "com.storeonline"
@@ -51,11 +54,11 @@ android {
 }
 
 dependencies {
-    implementation("androidx.compose.material3:material3:1.0.0")
-    implementation("androidx.compose.ui:ui:1.5.1")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.5.1")
-    implementation("androidx.compose.runtime:runtime-livedata:1.5.1")
-    implementation("androidx.compose.foundation:foundation:1.5.1")
+    implementation(libs.material3)
+    implementation(libs.ui)
+    implementation(libs.ui.tooling.preview)
+    implementation(libs.androidx.runtime.livedata)
+    implementation(libs.androidx.foundation)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -69,6 +72,15 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.recyclerview)
     implementation(libs.material)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.glide)
+    implementation(libs.coil.compose)
+    implementation(libs.volley)
+    implementation(libs.androidx.runner)
+    implementation(libs.osmdroid.android)
+
+    annotationProcessor(libs.compiler)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
