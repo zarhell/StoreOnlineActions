@@ -5,17 +5,17 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.storeonline.databinding.ActivityLoginBinding
-import com.storeonline.domain.service.AccountService
+import com.storeonline.infrastructure.repository.AccountRepository
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var accountService: AccountService
+    private lateinit var accountService: AccountRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        accountService = AccountService(this)
+        accountService = AccountRepository(this)
 
         if (accountService.isSessionActive()) {
             navigateToProductList()
@@ -24,10 +24,27 @@ class LoginActivity : AppCompatActivity() {
         binding.btnLogin.setOnClickListener {
             val username = binding.etUsername.text.toString()
             val password = binding.etPassword.text.toString()
-            if (accountService.authenticateUser(username, password)) {
-                navigateToProductList()
-            } else {
-                Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
+            if (username.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Por favor ingrese usuario y contraseña", Toast.LENGTH_SHORT)
+                    .show()
+                return@setOnClickListener
+            }
+            when {
+                !accountService.doesUserExist(username) -> {
+                    Toast.makeText(
+                        this,
+                        "El Usuario no se encuentra registrado",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                !accountService.authenticateUser(username, password) -> {
+                    Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
+                }
+
+                else -> {
+                    navigateToProductList()
+                }
             }
         }
 
@@ -36,7 +53,11 @@ class LoginActivity : AppCompatActivity() {
                 val intent = Intent(this, RegisterActivity::class.java)
                 startActivity(intent)
             } catch (e: Exception) {
-                Toast.makeText(this, "Error al iniciar RegisterActivity: ${e.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    this,
+                    "Error al iniciar RegisterActivity: ${e.message}",
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
     }

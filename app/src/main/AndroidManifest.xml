@@ -42,6 +42,10 @@
             android:exported="false" />
         <activity android:name="com.storeonline.infrastructure.view.PaymentActivity"
             android:exported="false" />
+        <activity android:name="com.storeonline.infrastructure.view.MapActivity"
+            android:exported="false" />
+        <activity android:name="com.storeonline.infrastructure.view.UserManagementActivity"
+            android:exported="false" />
         <meta-data
             android:name="osmdroid.basePath"
             android:value="osmdroid"/>

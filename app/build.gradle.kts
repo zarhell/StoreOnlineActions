@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.storeonline"
-        minSdk = 26
+        minSdk = 21
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -78,6 +78,8 @@ dependencies {
     implementation(libs.volley)
     implementation(libs.androidx.runner)
     implementation(libs.osmdroid.android)
+    implementation(libs.gson)
+
 
     annotationProcessor(libs.compiler)
 

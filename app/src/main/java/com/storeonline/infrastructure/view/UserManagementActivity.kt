@@ -4,17 +4,17 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.storeonline.databinding.ActivityUserManagementBinding
-import com.storeonline.domain.service.AccountService
+import com.storeonline.infrastructure.repository.AccountRepository
 
 class UserManagementActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUserManagementBinding
-    private lateinit var accountService: AccountService
+    private lateinit var accountService: AccountRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUserManagementBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        accountService = AccountService(this)
+        accountService = AccountRepository(this)
 
         binding.btnDeleteUser.setOnClickListener {
             val username = binding.etUsernameToDelete.text.toString()

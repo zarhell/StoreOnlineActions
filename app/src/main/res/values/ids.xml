@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="etCardNumber" type="id">cc_number</item>
-    <item name="etCardholderName" type="id">cc_holder_name</item>
-    <item name="etCountry" type="id">cc_country</item>
-    <item name="etPostalCode" type="id">cc_postal</item>
-    <item name="etCity" type="id">cc_city</item>
-    <item name="etExpiryDate" type="id">cc_expity_date</item>
-    <item name="etCvv" type="id">cc_cvv</item>
-    <item name="etShippingAddress" type="id">cc_shiping_address</item>
-    <item name="btnSelectLocation" type="id">Confirm_Location</item>
+    <item name="etCardNumber" type="id"/>
+    <item name="etCardholderName" type="id"/>
+    <item name="etCountry" type="id"/>
+    <item name="etPostalCode" type="id"/>
+    <item name="etCity" type="id"/>
+    <item name="etExpiryDate" type="id"/>
+    <item name="etCvv" type="id"/>
+    <item name="etShippingAddress" type="id"/>
+    <item name="btnSelectLocation" type="id"/>
 </resources>

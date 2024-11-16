@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.storeonline.R
 import com.storeonline.databinding.ActivityPaymentBinding
 import com.storeonline.domain.model.PaymentDetails
 
@@ -14,6 +15,8 @@ class PaymentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         activityPaymentbinding = ActivityPaymentBinding.inflate(layoutInflater)
         setContentView(activityPaymentbinding.root)
+
+        activityPaymentbinding.tvPaymentTitle.text = getString(R.string.payment_details)
 
         activityPaymentbinding.btnConfirmPayment.setOnClickListener {
             val paymentDetails = gatherPaymentDetails()

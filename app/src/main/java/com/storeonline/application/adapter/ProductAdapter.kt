@@ -18,8 +18,9 @@ class ProductAdapter(
         fun bind(product: Product) {
             binding.tvProductName.text = product.name
             binding.tvProductPrice.text = "$${product.price}"
+            val firstImage = product.images.firstOrNull() ?: R.drawable.placeholder_image
             Glide.with(binding.root.context)
-                .load(product.image)
+                .load(firstImage)
                 .placeholder(R.drawable.placeholder_image)
                 .error(R.drawable.error_image)
                 .into(binding.imgProduct)

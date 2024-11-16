@@ -4,37 +4,48 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.storeonline.R
-import com.storeonline.databinding.ItemProductBinding
-import com.storeonline.domain.model.Product
+import com.storeonline.databinding.ItemCartBinding
+import com.storeonline.domain.model.CartItem
 
 class CartAdapter(
-    private var products: List<Product>
+    private val cartItems: List<CartItem>,
+    private val onQuantityChange: (CartItem, Int) -> Unit,
+    private val onRemove: (CartItem) -> Unit
 ) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
-    class CartViewHolder(val binding: ItemProductBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class CartViewHolder(private val binding: ItemCartBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(cartItem: CartItem) {
+            binding.productName.text = cartItem.product.name
+            binding.productPrice.text = "$${cartItem.product.price}"
+            binding.productQuantity.text = cartItem.quantity.toString()
+            Glide.with(binding.root.context)
+                .load(cartItem.product.images.firstOrNull())
+                .into(binding.productImage)
+
+            binding.btnIncreaseQuantity.setOnClickListener {
+                onQuantityChange(cartItem, cartItem.quantity + 1)
+            }
+
+            binding.btnDecreaseQuantity.setOnClickListener {
+                if (cartItem.quantity > 1) {
+                    onQuantityChange(cartItem, cartItem.quantity - 1)
+                }
+            }
+
+            binding.btnRemove.setOnClickListener {
+                onRemove(cartItem)
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
-        val binding = ItemProductBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemCartBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return CartViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
-        val product = products[position]
-        holder.binding.tvProductName.text = product.name
-        holder.binding.tvProductPrice.text = "$${product.price}"
-
-    Glide.with(holder.itemView.context)
-        .load(product.image)
-        .placeholder(R.drawable.placeholder_image)
-        .error(R.drawable.error_image)
-        .into(holder.binding.imgProduct)
+        holder.bind(cartItems[position])
     }
 
-    override fun getItemCount() = products.size
-
-    fun updateList(newProducts: List<Product>) {
-        products = newProducts
-        notifyDataSetChanged()
-    }
+    override fun getItemCount() = cartItems.size
 }
