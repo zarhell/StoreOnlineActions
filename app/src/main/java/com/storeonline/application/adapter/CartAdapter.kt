@@ -13,13 +13,16 @@ class CartAdapter(
     private val onRemove: (CartItem) -> Unit
 ) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
-    inner class CartViewHolder(private val binding: ItemCartBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class CartViewHolder(private val binding: ItemCartBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(cartItem: CartItem) {
             binding.productName.text = cartItem.product.name
             binding.productPrice.text = "$${cartItem.product.price}"
             binding.productQuantity.text = cartItem.quantity.toString()
+
             Glide.with(binding.root.context)
                 .load(cartItem.product.images.firstOrNull())
+                .override(100, 100) // Imagen más pequeña
                 .into(binding.productImage)
 
             binding.btnIncreaseQuantity.setOnClickListener {
@@ -47,5 +50,5 @@ class CartAdapter(
         holder.bind(cartItems[position])
     }
 
-    override fun getItemCount() = cartItems.size
+    override fun getItemCount(): Int = cartItems.size
 }

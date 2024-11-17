@@ -9,24 +9,19 @@
     <string name="submit">Submit</string>
     <string name="confirm_password">Confirmar Contraseña</string>
     <string name="create_new_account">Crear nueva cuenta</string>
+    <string name="user_name">Nombre de usuario</string>
+    <string name="delete_user">Eliminar Usuario</string>
 
     <!-- Product List Screen -->
-    <string name="product_name">Product Name</string>
-    <string name="price">Price</string>
     <string name="buscar_productos">Buscar Productos</string>
     <string name="buscar_productos_dots">Buscar productos…</string>
-    <string name="ir_al_carrito">Ir al Carrito</string>
+    <string name="product_name">Product Name</string>
+    <string name="price">Price</string>
     <string name="product_price_format">Price: $%.2f</string>
+    <string name="ir_al_carrito">Ir al Carrito</string>
+    <string name="ver_carrito">Ver Carrito</string>
 
-
-    <!-- Cart Screen -->
-    <string name="carrito_de_compras">Carrito de Compras</string>
-    <string name="your_cart_is_empty">Your Cart is Empty</string>
-    <string name="go_to_cart">Go to Cart</string>
-    <string name="register">Register</string>
-    <string name="purchase">Comprar</string>
-    <string name="confirm_purchase">Confirmar la Compra</string>
-    <string name="proceed_to_purchase">Continuar al pago</string>
+    <!-- Product Details Screen -->
     <string name="detalle_producto">Detalle del Producto</string>
     <string name="agregar_al_carrito">Agregar al carrito</string>
     <string name="product_price">Precio del Producto</string>
@@ -34,10 +29,20 @@
     <string name="nombre_producto">Nombre Producto</string>
     <string name="precio_producto">Precio Producto</string>
     <string name="product_image">Imagen Producto</string>
-    <string name="ver_carrito">Ver Carrito</string>
-    <string name="user_name">Nombre de usuario</string>
-    <string name="delete_user">Eliminar Usuario</string>
-    <string name="country">País</string>
+
+    <!-- Cart Screen -->
+    <string name="carrito_de_compras">Carrito de Compras</string>
+    <string name="your_cart_is_empty">Your Cart is Empty</string>
+    <string name="go_to_cart">Go to Cart</string>
+    <string name="purchase">Comprar</string>
+    <string name="confirm_purchase">Confirmar detalles de Envio</string>
+    <string name="proceed_to_purchase">Continuar al Envio</string>
+    <string name="remove">Remover</string>
+    <string name="increase_quantity">+</string>
+    <string name="decrease_quantity">-</string>
+
+    <!-- Payment Screen -->
+    <string name="payment_details">Detalles de Pago</string>
     <string name="card_number">Número de Tarjeta</string>
     <string name="card_owner">Nombre del Titular</string>
     <string name="expiration_date">Fecha de Expiración (MM/YY)</string>
@@ -45,7 +50,11 @@
     <string name="shipping_address">Dirección de Envío</string>
     <string name="city">Ciudad</string>
     <string name="postal_code">Código Postal</string>
+    <string name="country">País</string>
     <string name="location_confirmation">Confirmar Ubicación</string>
-    <string name="payment_details">Detalles de Pago</string>
-
+    <string name="detalles_de_envio">Detalles de Envío</string>
+    <string name="ubicacion_sin_seleccionar">Ubicación Seleccionada: Sin seleccionar</string>
+    <string name="seleccionar_ubicacion">Seleccionar Ubicación</string>
+    <string name="tiempo_estimado_de_entrega">Tiempo estimado de entrega:</string>
+    <string name="continuar_al_pago">Continuar al Pago</string>
 </resources>

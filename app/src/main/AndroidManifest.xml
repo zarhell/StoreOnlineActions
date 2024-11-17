@@ -38,6 +38,8 @@
             android:exported="false" />
         <activity android:name="com.storeonline.infrastructure.view.CartActivity"
             android:exported="false" />
+        <activity android:name="com.storeonline.infrastructure.view.ShippingDetailsActivity"
+            android:exported="false" />
         <activity android:name="com.storeonline.infrastructure.view.PurchaseActivity"
             android:exported="false" />
         <activity android:name="com.storeonline.infrastructure.view.PaymentActivity"

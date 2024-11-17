@@ -21,7 +21,7 @@ class AccountRepository(context: Context) :
 
     companion object {
         private const val DATABASE_NAME = "storeonline.db"
-        private const val DATABASE_VERSION = 8
+        private const val DATABASE_VERSION = 9
     }
 
     override fun onCreate(db: SQLiteDatabase) {

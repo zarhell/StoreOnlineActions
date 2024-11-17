@@ -36,7 +36,7 @@ class PurchaseActivity : AppCompatActivity() {
                     cartAdapter.notifyDataSetChanged()
                     if (CartRepository.isCartEmpty()) {
                         Toast.makeText(this, "El carrito está vacío.", Toast.LENGTH_SHORT).show()
-                        finish() // Cerrar la actividad si el carrito queda vacío
+                        finish()
                     }
                 }
             )

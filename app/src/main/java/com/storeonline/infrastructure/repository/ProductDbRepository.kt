@@ -5,8 +5,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.storeonline.application.client.ProductContract
 import com.storeonline.domain.model.Product
 
@@ -22,16 +20,15 @@ class ProductDbRepository(context: Context) : SQLiteOpenHelper(context, DATABASE
 
     companion object {
         private const val DATABASE_NAME = "storeonline.db"
-        private const val DATABASE_VERSION = 8
+        private const val DATABASE_VERSION = 9
     }
 
     fun addProduct(product: Product) {
-        val gson = Gson()
-        val imagesJson = gson.toJson(product.images)
+        val imagesString: String = product.images.joinToString(",")
         val values = ContentValues().apply {
             put(ProductContract.ProductEntry.COLUMN_NAME_NAME, product.name)
             put(ProductContract.ProductEntry.COLUMN_NAME_PRICE, product.price)
-            put(ProductContract.ProductEntry.COLUMN_NAME_IMAGES, imagesJson)
+            put(ProductContract.ProductEntry.COLUMN_NAME_IMAGES, imagesString)
         }
         writableDatabase.insert(ProductContract.ProductEntry.TABLE_NAME, null, values)
     }
@@ -44,14 +41,17 @@ class ProductDbRepository(context: Context) : SQLiteOpenHelper(context, DATABASE
         )
 
         cursor.use {
-            val gson = Gson()
-            val type = object : TypeToken<List<String>>() {}.type
             while (it.moveToNext()) {
                 val id = it.getLong(it.getColumnIndexOrThrow(ProductContract.ProductEntry.COLUMN_NAME_ID))
                 val name = it.getString(it.getColumnIndexOrThrow(ProductContract.ProductEntry.COLUMN_NAME_NAME))
                 val price = it.getDouble(it.getColumnIndexOrThrow(ProductContract.ProductEntry.COLUMN_NAME_PRICE))
-                val imagesJson = it.getString(it.getColumnIndexOrThrow(ProductContract.ProductEntry.COLUMN_NAME_IMAGES))
-                val images = gson.fromJson<List<String>>(imagesJson, type)
+                val imagesString = it.getString(it.getColumnIndexOrThrow(ProductContract.ProductEntry.COLUMN_NAME_IMAGES))
+
+                val images = if (imagesString.isNullOrEmpty()) {
+                    emptyList()
+                } else {
+                    imagesString.split(",").map { it.trim() }
+                }
 
                 products.add(Product(id, name, price, images))
             }
