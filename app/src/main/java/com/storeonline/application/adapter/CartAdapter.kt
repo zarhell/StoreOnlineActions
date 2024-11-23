@@ -22,7 +22,7 @@ class CartAdapter(
 
             Glide.with(binding.root.context)
                 .load(cartItem.product.images.firstOrNull())
-                .override(100, 100) // Imagen más pequeña
+                .override(100, 100)
                 .into(binding.productImage)
 
             binding.btnIncreaseQuantity.setOnClickListener {

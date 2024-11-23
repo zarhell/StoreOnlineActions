@@ -3,16 +3,16 @@ plugins {
     alias(libs.plugins.kotlin.android)
     id("kotlin-android")
     id("kotlin-parcelize")
+    id("com.google.gms.google-services")
 }
-
 
 android {
     namespace = "com.storeonline"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.storeonline"
-        minSdk = 21
+    applicationId = "com.storeonline"
+        minSdk = 23
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -59,7 +59,6 @@ dependencies {
     implementation(libs.ui.tooling.preview)
     implementation(libs.androidx.runtime.livedata)
     implementation(libs.androidx.foundation)
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -79,6 +78,16 @@ dependencies {
     implementation(libs.androidx.runner)
     implementation(libs.osmdroid.android)
     implementation(libs.gson)
+    implementation(libs.play.services.location)
+    implementation(libs.play.services.phenotype)
+    implementation(libs.android.sdk)
+    implementation("com.paypal.android:card-payments:1.0.0")
+    implementation("com.paypal.android:paypal-web-payments:1.7.1")
+    implementation("com.paypal.checkout:android-sdk:1.1.0")
+
+    implementation(platform("com.google.firebase:firebase-bom:33.6.0"))
+    implementation("com.google.firebase:firebase-auth-ktx")
+
 
 
     annotationProcessor(libs.compiler)

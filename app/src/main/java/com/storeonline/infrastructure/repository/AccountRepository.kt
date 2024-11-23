@@ -36,7 +36,7 @@ class AccountRepository(context: Context) :
         onCreate(db)
     }
 
-    fun registerUser(user: User): Boolean {
+        fun registerUser(user: User): Boolean {
         val db = writableDatabase
         return try {
             val values = ContentValues().apply {
@@ -81,12 +81,7 @@ class AccountRepository(context: Context) :
         return if (sessionStartTime != -1L) {
             val currentTime = SystemClock.elapsedRealtime()
             val elapsedTime = currentTime - sessionStartTime
-            if (elapsedTime < SESSION_DURATION) {
-                true
-            } else {
-                logoutUser()
-                false
-            }
+        elapsedTime < SESSION_DURATION
         } else {
             false
         }

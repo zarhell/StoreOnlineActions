@@ -1,59 +1,65 @@
 package com.storeonline.infrastructure.view
 
-import android.content.Intent
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.storeonline.R
+import com.paypal.checkout.approve.OnApprove
+import com.paypal.checkout.cancel.OnCancel
+import com.paypal.checkout.createorder.CreateOrder
+import com.paypal.checkout.createorder.CurrencyCode
+import com.paypal.checkout.createorder.OrderIntent
+import com.paypal.checkout.createorder.UserAction
+import com.paypal.checkout.error.OnError
+import com.paypal.checkout.order.Amount
+import com.paypal.checkout.order.AppContext
+import com.paypal.checkout.order.OrderRequest
+import com.paypal.checkout.order.PurchaseUnit
+import com.storeonline.application.config.PayPalConfig
 import com.storeonline.databinding.ActivityPaymentBinding
-import com.storeonline.domain.model.PaymentDetails
 
 class PaymentActivity : AppCompatActivity() {
-    private lateinit var activityPaymentbinding: ActivityPaymentBinding
 
+    private lateinit var binding: ActivityPaymentBinding
+
+    @SuppressLint("NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activityPaymentbinding = ActivityPaymentBinding.inflate(layoutInflater)
-        setContentView(activityPaymentbinding.root)
+        binding = ActivityPaymentBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        activityPaymentbinding.tvPaymentTitle.text = getString(R.string.payment_details)
+        PayPalConfig(application)
 
-        activityPaymentbinding.btnConfirmPayment.setOnClickListener {
-            val paymentDetails = gatherPaymentDetails()
-            if (paymentDetails != null) {
-                processPayment(paymentDetails)
-            } else {
-                Toast.makeText(this, "Por favor, complete todos los campos.", Toast.LENGTH_SHORT).show()
+        binding.payPalButtonContainer.setup(
+            createOrder = CreateOrder { createOrderActions ->
+                val order = OrderRequest(
+                    intent = OrderIntent.CAPTURE,
+                    appContext = AppContext(userAction = UserAction.PAY_NOW),
+                    purchaseUnitList = listOf(
+                        PurchaseUnit(
+                            amount = Amount(
+                                currencyCode = CurrencyCode.USD,
+                                value = "10.00" // Reemplaza con el monto total del carrito
+                            )
+                        )
+                    )
+                )
+                createOrderActions.create(order)
+            },
+            onApprove = OnApprove { approval ->
+                val orderID = approval.data.orderId
+                // Envía el orderID a tu servidor para capturar el pago
+                sendOrderIDToServer(orderID)
+            },
+            onCancel = OnCancel {
+                // Maneja la cancelación del pago
+            },
+            onError = OnError { errorInfo ->
+                // Maneja el error durante el pago
             }
-        }
-
-        activityPaymentbinding.btnSelectLocation.setOnClickListener {
-            val intent = Intent(this, MapActivity::class.java)
-            startActivity(intent)
-        }
+        )
     }
 
-    private fun gatherPaymentDetails(): PaymentDetails? {
-        val cardNumber = activityPaymentbinding.etCardNumber.text.toString()
-        val cardholderName = activityPaymentbinding.etCardholderName.text.toString()
-        val expiryDate = activityPaymentbinding.etExpiryDate.text.toString()
-        val cvv = activityPaymentbinding.etCvv.text.toString()
-        val shippingAddress = activityPaymentbinding.etShippingAddress.text.toString()
-        val city = activityPaymentbinding.etCity.text.toString()
-        val postalCode = activityPaymentbinding.etPostalCode.text.toString()
-        val country = activityPaymentbinding.etCountry.text.toString()
-
-        return if (cardNumber.isNotEmpty() && cardholderName.isNotEmpty() && expiryDate.isNotEmpty() &&
-            cvv.isNotEmpty() && shippingAddress.isNotEmpty() && city.isNotEmpty() && postalCode.isNotEmpty() && country.isNotEmpty()
-        ) {
-            PaymentDetails(cardNumber, cardholderName, expiryDate, cvv, shippingAddress, city, postalCode, country)
-        } else {
-            null
-        }
-    }
-
-    private fun processPayment(paymentDetails: PaymentDetails) {
-        Toast.makeText(this, "Pago confirmado. Detalles de envío registrados.", Toast.LENGTH_LONG).show()
-        finish()
+    private fun sendOrderIDToServer(orderID: String?) {
+        TODO("Not yet implemented")
     }
 }

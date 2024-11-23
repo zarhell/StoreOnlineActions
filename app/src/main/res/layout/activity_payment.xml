@@ -18,95 +18,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="16dp" />
 
-    <EditText
-        android:id="@+id/etCardNumber"
-        android:layout_width="0dp"
+    <com.paypal.checkout.paymentbutton.PaymentButtonContainer
+        android:id="@+id/payPalButtonContainer"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/card_number"
+        android:text="@string/pay_with_paypal"
         app:layout_constraintTop_toBottomOf="@id/tvPaymentTitle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <EditText
-        android:id="@+id/etCardholderName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/card_owner"
-        app:layout_constraintTop_toBottomOf="@id/etCardNumber"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <EditText
-        android:id="@+id/etExpiryDate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/expiration_date"
-        app:layout_constraintTop_toBottomOf="@id/etCardholderName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <EditText
-        android:id="@+id/etCvv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/cvv"
-        app:layout_constraintTop_toBottomOf="@id/etExpiryDate"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <EditText
-        android:id="@+id/etShippingAddress"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/shipping_address"
-        app:layout_constraintTop_toBottomOf="@id/etCvv"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <EditText
-        android:id="@+id/etCity"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/city"
-        app:layout_constraintTop_toBottomOf="@id/etShippingAddress"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <EditText
-        android:id="@+id/etPostalCode"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/postal_code"
-        app:layout_constraintTop_toBottomOf="@id/etCity"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <EditText
-        android:id="@+id/etCountry"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/country"
-        app:layout_constraintTop_toBottomOf="@id/etPostalCode"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/btnSelectLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/location_confirmation"
-        app:layout_constraintTop_toBottomOf="@id/etCountry"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="24dp" />
 
-    <Button
-        android:id="@+id/btnConfirmPayment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/confirm_purchase"
-        app:layout_constraintTop_toBottomOf="@id/btnSelectLocation"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

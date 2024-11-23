@@ -23,7 +23,8 @@ class RegisterActivity : AppCompatActivity() {
             val confirmPassword = binding.etConfirmPassword.text.toString()
 
             if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-                Toast.makeText(this, "Por favor complete todos los campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Por favor complete todos los campos", Toast.LENGTH_SHORT)
+                    .show()
                 return@setOnClickListener
             }
 
@@ -40,17 +41,11 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this, "Error al registrar el usuario", Toast.LENGTH_SHORT).show()
             }
 
-            if (password == confirmPassword) {
-                val user = User(username, password)
-                if (accountService.registerUser(user)) {
-                    Toast.makeText(this, "Usuario registrado exitosamente", Toast.LENGTH_SHORT).show()
-                    finish()
-                } else {
-                    Toast.makeText(this, "Error al registrar el usuario", Toast.LENGTH_SHORT).show()
-                }
-            } else {
-                Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
+            val userToRegister = User(username, password)
+            if (accountService.registerUser(userToRegister)) {
+                Toast.makeText(this, "Usuario registrado exitosamente", Toast.LENGTH_SHORT).show()
+                finish()
+            }
         }
     }
-}
 }

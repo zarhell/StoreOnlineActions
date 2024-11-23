@@ -57,4 +57,10 @@
     <string name="seleccionar_ubicacion">Seleccionar Ubicación</string>
     <string name="tiempo_estimado_de_entrega">Tiempo estimado de entrega:</string>
     <string name="continuar_al_pago">Continuar al Pago</string>
+    <string name="delivery_estimate">Tiempo estimado de entrega: %s días</string>
+    <string name="selected_location">Ubicación seleccionada: %s</string>
+    <string name="pay_with_paypal">Pay with PayPal</string>
+    <string name="default_web_client_id">257185770024-1p0qpnt8lob6l5m9ime2ub32ur0mdg7d.apps.googleusercontent.com</string>
+    <string name="login_with_google">Iniciar sesión con Google</string>
+
 </resources>

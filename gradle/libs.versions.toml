@@ -1,8 +1,16 @@
 [versions]
 agp = "8.6.0"
+androidSdk = "0.7.3"
+androidSdkVersion = "1.1.0"
+cardinalmobilesdk = "2.2.7-2"
+cardPayments = "VERSION"
+cardPaymentsVersion = "CURRENT-VERSION-SNAPSHOT"
 coilCompose = "2.4.0"
+credentialsVersion = "<latest version>"
+firebaseBom = "33.6.0"
 foundation = "1.5.1"
 glide = "4.13.2"
+googleid = "<latest version>"
 gson = "2.10.1"
 kotlin = "1.9.0"
 coreKtx = "1.10.1"
@@ -19,20 +27,40 @@ material = "1.12.0"
 material3 = "1.3.1"
 osmbonuspack = "6.9.0"
 osmdroidAndroid = "6.1.10"
+paypalAndroidSdk = "2.16.0"
+paypalCheckout = "1.0.0"
+paypalSdk = "1"
+playServicesAuth = "21.2.0"
+playServicesAuthVersion = "20.7.0"
 recyclerview = "1.3.2"
+restApiSdk = "1.14.0"
 runtimeLivedata = "1.5.1"
 ui = "1.7.5"
 uiToolingPreview = "1.5.1"
 volley = "1.2.1"
 runner = "1.5.2"
+playServicesLocation = "21.3.0"
+playServicesPhenotype = "17.0.0"
+firebaseCommonKtx = "21.0.0"
+firebaseAuthKtx = "23.1.0"
 
 [libraries]
+android-sdk = { module = "com.paypal.checkout:android-sdk", version.ref = "androidSdk" }
+android-sdk-v110 = { module = "com.paypal.checkout:android-sdk", version.ref = "androidSdkVersion" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-credentials-play-services-auth = { module = "androidx.credentials:credentials-play-services-auth", version.ref = "credentialsVersion" }
 androidx-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "foundation" }
 androidx-runtime-livedata = { module = "androidx.compose.runtime:runtime-livedata", version.ref = "runtimeLivedata" }
+card-payments = { module = "com.paypal.android:card-payments", version.ref = "cardPayments" }
+card-payments-vcurrentversionsnapshot = { module = "com.paypal.android:card-payments", version.ref = "cardPaymentsVersion" }
+cardinalmobilesdk = { module = "org.jfrog.cardinalcommerce.gradle:cardinalmobilesdk", version.ref = "cardinalmobilesdk" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
+credentials = { module = "androidx.credentials:credentials", version.ref = "credentialsVersion" }
+firebase-auth = { module = "com.google.firebase:firebase-auth" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+googleid = { module = "com.google.android.libraries.identity.googleid:googleid", version.ref = "googleid" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -55,10 +83,21 @@ material = { module = "com.google.android.material:material", version.ref = "mat
 material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 osmbonuspack = { module = "org.osmdroid:osmbonuspack", version.ref = "osmbonuspack" }
 osmdroid-android = { module = "org.osmdroid:osmdroid-android", version.ref = "osmdroidAndroid" }
+paypal-android-sdk = { module = "com.paypal.sdk:paypal-android-sdk", version.ref = "paypalAndroidSdk" }
+paypal-checkout = { module = "com.paypal.android:paypal-checkout", version.ref = "paypalCheckout" }
+paypal-sdk = { module = "com.paypal.android:paypal-sdk", version.ref = "paypalSdk" }
+paypal-web-payments = { module = "com.paypal.android:paypal-web-payments", version.ref = "cardPayments" }
+play-services-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "playServicesAuth" }
+play-services-auth-v2070 = { module = "com.google.android.gms:play-services-auth", version.ref = "playServicesAuthVersion" }
+rest-api-sdk = { module = "com.paypal.sdk:rest-api-sdk", version.ref = "restApiSdk" }
 ui = { module = "androidx.compose.ui:ui", version.ref = "ui" }
 ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "uiToolingPreview" }
 volley = { group = "com.android.volley", name = "volley", version.ref = "volley" }
 androidx-runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
+play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
+play-services-phenotype = { group = "com.google.android.gms", name = "play-services-phenotype", version.ref = "playServicesPhenotype" }
+firebase-common-ktx = { group = "com.google.firebase", name = "firebase-common-ktx", version.ref = "firebaseCommonKtx" }
+firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx", version.ref = "firebaseAuthKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
