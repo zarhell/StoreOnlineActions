@@ -47,14 +47,12 @@ class PaymentActivity : AppCompatActivity() {
             },
             onApprove = OnApprove { approval ->
                 val orderID = approval.data.orderId
-                // Envía el orderID a tu servidor para capturar el pago
                 sendOrderIDToServer(orderID)
             },
             onCancel = OnCancel {
-                // Maneja la cancelación del pago
             },
             onError = OnError { errorInfo ->
-''            }
+            }
         )
     }
 
