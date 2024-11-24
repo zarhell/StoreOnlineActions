@@ -16,10 +16,8 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Inicializa Firebase Auth
         auth = FirebaseAuth.getInstance()
 
-        // Manejo de botón de inicio de sesión
         binding.btnLogin.setOnClickListener {
             val email = binding.etUsername.text.toString()
             val password = binding.etPassword.text.toString()
@@ -32,22 +30,21 @@ class LoginActivity : AppCompatActivity() {
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        navigateToProductList()
+                        navigateToSelectionActivity()
                     } else {
                         Toast.makeText(this, "Error de autenticación: ${task.exception?.message}", Toast.LENGTH_LONG).show()
                     }
                 }
         }
 
-        // Manejo de botón de crear cuenta
         binding.btnCreateAccount.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
     }
 
-    private fun navigateToProductList() {
-        val intent = Intent(this, ProductListActivity::class.java)
+    private fun navigateToSelectionActivity() {
+        val intent = Intent(this, SelectionActivity::class.java)
         startActivity(intent)
         finish()
     }

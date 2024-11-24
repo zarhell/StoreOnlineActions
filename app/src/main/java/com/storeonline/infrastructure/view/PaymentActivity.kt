@@ -38,7 +38,7 @@ class PaymentActivity : AppCompatActivity() {
                         PurchaseUnit(
                             amount = Amount(
                                 currencyCode = CurrencyCode.USD,
-                                value = "10.00" // Reemplaza con el monto total del carrito
+                                value = "10.00"
                             )
                         )
                     )

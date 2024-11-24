@@ -2,11 +2,11 @@ package com.storeonline.infrastructure.view
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.location.Address
 import android.location.Geocoder
-import android.os.Build
 import android.os.Bundle
+import android.view.inputmethod.EditorInfo
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.storeonline.R
@@ -22,6 +22,7 @@ class MapActivity : AppCompatActivity() {
 
     private lateinit var mapView: MapView
     private lateinit var geocoder: Geocoder
+    private lateinit var mapController: IMapController
 
     companion object {
         const val EXTRA_SELECTED_LOCATION = "extra_selected_location"
@@ -38,11 +39,10 @@ class MapActivity : AppCompatActivity() {
 
         mapView = findViewById(R.id.mapView)
         mapView.setMultiTouchControls(true)
-
         geocoder = Geocoder(this, Locale.getDefault())
 
         val defaultLocation = GeoPoint(4.711, -74.0721)
-        val mapController: IMapController = mapView.controller
+        mapController = mapView.controller
         mapController.setZoom(15.0)
         mapController.setCenter(defaultLocation)
 
@@ -52,7 +52,6 @@ class MapActivity : AppCompatActivity() {
         marker.title = "Ubicación de envío"
         mapView.overlays.add(marker)
 
-
         mapView.setOnTouchListener { _, event ->
             val geoPoint = mapView.projection.fromPixels(event.x.toInt(), event.y.toInt()) as GeoPoint
             marker.position = geoPoint
@@ -61,10 +60,16 @@ class MapActivity : AppCompatActivity() {
             true
         }
 
-        findViewById<Button>(R.id.btnSelectLocation).setOnClickListener  {
-            val selectedLocation = marker.position
-            Toast.makeText(this, "Obteniendo dirección...", Toast.LENGTH_SHORT).show()
+        findViewById<Button>(R.id.btnZoomIn).setOnClickListener {
+            mapController.zoomIn()
+        }
 
+        findViewById<Button>(R.id.btnZoomOut).setOnClickListener {
+            mapController.zoomOut()
+        }
+
+        findViewById<Button>(R.id.btnSelectLocation).setOnClickListener {
+            val selectedLocation = marker.position
             getAddressFromLocation(selectedLocation) { address ->
                 if (address != null) {
                     val resultIntent = Intent().apply {
@@ -80,33 +85,58 @@ class MapActivity : AppCompatActivity() {
                     }
                 }
             }
+
+        setupSearchBar(marker)
+    }
+
+    private fun setupSearchBar(marker: Marker) {
+        val searchBar = findViewById<EditText>(R.id.searchBar)
+
+        searchBar.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                val query = searchBar.text.toString()
+                if (query.isNotEmpty()) {
+                    searchLocation(query, marker)
+                }
+                true
+            } else {
+                false
+            }
+        }
+    }
+
+    private fun searchLocation(query: String, marker: Marker) {
+        Executors.newSingleThreadExecutor().execute {
+            try {
+                val addresses = geocoder.getFromLocationName(query, 1)
+                if (addresses != null && addresses.isNotEmpty()) {
+                    val address = addresses.first()
+                    val geoPoint = GeoPoint(address.latitude, address.longitude)
+                    runOnUiThread {
+                        marker.position = geoPoint
+                        marker.title = "Ubicación encontrada: ${address.getAddressLine(0)}"
+                        marker.showInfoWindow()
+                        mapController.setCenter(geoPoint)
+                        Toast.makeText(this, "Ubicación encontrada", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    runOnUiThread {
+                        Toast.makeText(this, "No se encontraron resultados para: $query", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                runOnUiThread {
+                    Toast.makeText(this, "Error al buscar la ubicación", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
         }
 
     private fun getAddressFromLocation(
         geoPoint: GeoPoint,
         callback: (String?) -> Unit
     ) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            geocoder.getFromLocation(
-                geoPoint.latitude,
-                geoPoint.longitude,
-                1,
-                object : Geocoder.GeocodeListener {
-                    override fun onGeocode(addresses: List<Address>) {
-                        val address = addresses.firstOrNull()?.getAddressLine(0)
-                        runOnUiThread {
-                        callback(address)
-                    }
-                    }
-
-                    override fun onError(errorMessage: String?) {
-                        runOnUiThread {
-                        callback(null)
-                    }
-                }
-                }
-            )
-        } else {
             Executors.newSingleThreadExecutor().execute {
                 try {
                     val addresses = geocoder.getFromLocation(geoPoint.latitude, geoPoint.longitude, 1)
@@ -122,7 +152,6 @@ class MapActivity : AppCompatActivity() {
     }
             }
         }
-    }
 
     override fun onResume() {
         super.onResume()

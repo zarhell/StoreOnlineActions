@@ -6,7 +6,7 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
-    <string name="submit">Submit</string>
+    <string name="submit">Enviar</string>
     <string name="confirm_password">Confirmar Contraseña</string>
     <string name="create_new_account">Crear nueva cuenta</string>
     <string name="user_name">Nombre de usuario</string>
@@ -20,6 +20,11 @@
     <string name="product_price_format">Price: $%.2f</string>
     <string name="ir_al_carrito">Ir al Carrito</string>
     <string name="ver_carrito">Ver Carrito</string>
+
+    <!--Add Products Screen -->
+    <string name="welcome">Bienvenido, ¿qué deseas hacer?</string>
+    <string name="buy">Comprar</string>
+    <string name="sell">Vender</string>
 
     <!-- Product Details Screen -->
     <string name="detalle_producto">Detalle del Producto</string>
@@ -62,5 +67,10 @@
     <string name="pay_with_paypal">Pay with PayPal</string>
     <string name="default_web_client_id">257185770024-1p0qpnt8lob6l5m9ime2ub32ur0mdg7d.apps.googleusercontent.com</string>
     <string name="login_with_google">Iniciar sesión con Google</string>
+    <string name="capturar_imagen">Capturar Imagen</string>
+    <string name="sin_imagen">Sin Imagen</string>
+    <string name="zoom_in">Zoom +</string>
+    <string name="zoom_out">Zoom -</string>
+    <string name="search_location">Buscar Direccion</string>
 
 </resources>
