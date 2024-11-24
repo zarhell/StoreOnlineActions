@@ -54,8 +54,7 @@ class PaymentActivity : AppCompatActivity() {
                 // Maneja la cancelación del pago
             },
             onError = OnError { errorInfo ->
-                // Maneja el error durante el pago
-            }
+''            }
         )
     }
 
